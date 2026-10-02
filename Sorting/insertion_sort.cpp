@@ -2,12 +2,12 @@
 using namespace std;
 #include <bits/stdc++.h>
 
-void bubble_sort(int arr[],int n){
+void insertion_sort(int arr[],int n){
     for(int i=0;i<n;i++){
-        for(int j=0;j<n-i-1;j++){
-            if(arr[j+1]<arr[j]){
-                swap(arr[j],arr[j+1]);
-            }
+        int j=i;
+        while(j>0 && arr[j-1]>arr[j]){
+            swap(arr[j-1],arr[j]);
+            j--;
         }
     }
 }
@@ -19,5 +19,5 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>arr[i];
     }
-    bubb(arr,n);
+    insertion_sort(arr,n);
 }
