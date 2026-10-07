@@ -57,6 +57,26 @@ int longest_consecutive_sequence(int arr[],int n){
     return longest;
 }
 
+int longest_consecutive_sequence_optimal(int arr[],int n){
+    int longest = 1;
+    unordered_set<int> stt;
+    for(int i=0;i<n;i++){
+        stt.insert(arr[i]);
+    }
+    for(auto it:stt){
+        if(stt.find(it-1) == stt.end()){
+            int count = 1;
+            int x=it;
+            while(stt.find(x+1) != stt.end()){
+                count++;
+                x++;
+            }
+            longest = max(longest,count);
+        }
+    }
+    return longest;
+}
+
 int main(){
     int n;
     cout<<"Enter the value of n : ";
