@@ -1,6 +1,5 @@
-#include <iostream>
-using namespace std;
 #include <bits/stdc++.h>
+using namespace std;
 
 void Merge(int arr[],int low,int mid,int high){
     vector<int> array;
@@ -39,12 +38,33 @@ void Merge_Sort(int arr[],int low,int high){
     Merge(arr,low,mid,high);
 }
 
+int longest_consecutive_sequence(int arr[],int n){
+    Merge_Sort(arr,0,n-1);
+    int longest =0;
+    int count =1;
+    int lastsmall = INT_MIN; 
+    for(int i=0;i<n;i++){
+        if(arr[i]-1 == lastsmall){
+            count++;
+            lastsmall = arr[i];
+        }
+        else{
+            count = 1;
+            lastsmall = arr[i];
+        }
+        longest = max(longest,count);
+    }
+    return longest;
+}
+
 int main(){
     int n;
-    cout<<"Enter the value of n : ";cin>>n;
+    cout<<"Enter the value of n : ";
+    cin>>n;
     int arr[100];
+    cout<<"Enter the value of array elements : ";
     for(int i=0;i<n;i++){
         cin>>arr[i];
     }
-    Merge_Sort(arr,0,n);
+    longest_consecutive_sequence(arr,n);
 }
