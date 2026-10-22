@@ -3,9 +3,9 @@ using namespace std;
 
 int result(vector<int> arr,int k){
     int n = arr.size();
-    int ans = 1;
+    int ans = 0;
     for(int i=0;i<n;i++){
-        ans += ceil(arr[i]/k);
+        ans += ceil((double)arr[i]/k);
     }
     return ans;
 }
